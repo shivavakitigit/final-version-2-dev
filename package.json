@@ -35,7 +35,7 @@
     "react-native-screens": "latest",
     "react-native-svg": "latest",
     "react-native-web": "~0.19.13",
-    "sonner-native": "latest"
+    "sonner-native": "^0.17.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

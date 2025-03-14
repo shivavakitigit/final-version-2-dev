@@ -24,6 +24,9 @@ import { toast } from 'sonner-native';
 import ReferralCard from '../components/ReferralCard';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as ImagePicker from 'expo-image-picker';
+import StudentFindProfessionalsButton from './StudentFindProfessionalsButton';
+import ProfessionalFindStudentsButton from './ProfessionalFindStudentsButton';
+// Import the new buttons
 
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
@@ -259,6 +262,37 @@ export default function HomeScreen({ navigation }: Props) {
             </TouchableOpacity>
           </View>
         </View>
+
+        {/* Professional/Student Find Buttons Based on User Type */}
+        <StudentFindProfessionalsButton navigation={navigation} />
+        <ProfessionalFindStudentsButton navigation={navigation} />
+
+        {/* Check Referral Offers/Sent Offers Buttons Based on User Type */}
+        {userType === 'student' && (
+          <View style={styles.offersButtonContainer}>
+            <Button 
+              mode="contained" 
+              icon="inbox-arrow-down" 
+              onPress={() => navigation.navigate('ReferralOffers')}
+              style={styles.offersButton}
+            >
+              Check Referral Offers
+            </Button>
+          </View>
+        )}
+
+        {userType === 'professional' && (
+          <View style={styles.offersButtonContainer}>
+            <Button 
+              mode="contained" 
+              icon="inbox-arrow-up" 
+              onPress={() => navigation.navigate('SentReferralOffers')}
+              style={styles.offersButton}
+            >
+              View Sent Offers
+            </Button>
+          </View>
+        )}
 
         {/* Stats Section */}
         <View style={styles.statsContainer}>
@@ -572,9 +606,17 @@ const styles = StyleSheet.create({
     marginTop: 4,
     alignSelf: 'flex-start',
   },
+  offersButtonContainer: {
+    marginHorizontal: 16,
+    marginTop: 8,
+  },
+  offersButton: {
+    borderRadius: 8,
+    paddingVertical: 6,
+  },
   statsContainer: {
     marginHorizontal: 16,
-    marginTop: -32,
+    marginTop: 16,
   },
   statsCard: {
     borderRadius: 16,

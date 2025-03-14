@@ -16,7 +16,7 @@
   "include": [
     "**/*.js",
     "**/*.jsx"
-  ],
+, "screens/RegistrationForm.tsx", "screens/AppNavigation.tsx"  ],
   "exclude": [
     "node_modules",
     "babel.config.js",
